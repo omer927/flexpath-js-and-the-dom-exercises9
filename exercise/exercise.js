@@ -7,14 +7,11 @@ Select the element with the ID 'main-title' and change its text content
 to "Welcome to the DOM Manipulation Page".
 */
 
-let placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const mainTitle = document.getElementById('main-title');
+mainTitle.textContent = "Welcome to the DOM Manipulation Page";
+console.log(mainTitle);
 
-console.log("Making a change!");
-
+console.log("hello")
 /*
 Exercise 2: Accessing Elements with querySelector
 
@@ -24,11 +21,8 @@ Use querySelector to select the first <p> element with the
 class 'intro-text' and change its color to blue.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const introText = document.querySelector('.intro-text');
+introText.style.color = "blue";
 
 /*
 Exercise 3: Accessing Multiple Elements with querySelectorAll
@@ -39,11 +33,10 @@ Use querySelectorAll to select all elements with the class 'article-text' and
 set their font size to 18px.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const articleText = document.querySelectorAll(".article-text");
+articleText.forEach(function(paragragh){
+	paragragh.style.fontSize = '18px';
+});
 
 /*
 Exercise 4: Navigating the DOM Tree
@@ -54,12 +47,9 @@ Select the element with ID 'introduction' and access its parent node.
 Log the parent node's tag name to the console.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
-
+const intro = document.getElementById('introduction');
+const parent = intro.parentNode;
+console.log("Parent tag name:", parent.tagName);
 /*
 Exercise 5: Accessing Child Nodes
 
@@ -69,11 +59,8 @@ Select the <ul> with ID 'item-list' and log the number of
 its child elements to the console.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const itemList = document.getElementById('item-list');
+console.log("Number of child elements is:", itemList.children.length);
 
 /*
 Exercise 6: Updating Inner HTML
@@ -84,11 +71,9 @@ Change the inner HTML of the element with ID 'introduction' to
 include a new paragraph saying "This content has been updated!".
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+
+intro.innerHTML += "This content has been updated!";
+
 
 /*
 Exercise 7: Changing Attributes with setAttribute
@@ -99,11 +84,8 @@ Assume there's an image with ID 'main-image' in your HTML.
 Change its src attribute to point "image2.png".
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const mainImage = document.getElementById('main-image');
+mainImage.setAttribute('src', 'image2.png')
 
 /*
 Exercise 8: Adding an Event Listener
@@ -114,11 +96,7 @@ Add an event listener to the button with ID 'alert-button' that
 shows an alert with the message "Button Clicked!" when clicked.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+
 
 /*
 Exercise 9: Removing an Event Listener
