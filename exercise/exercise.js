@@ -72,7 +72,7 @@ include a new paragraph saying "This content has been updated!".
 */
 
 
-intro.innerHTML = "This content has been updated";
+intro.innerHTML += "<p>This content has been updated</p>";
 
 
 /*
@@ -84,8 +84,8 @@ Assume there's an image with ID 'main-image' in your HTML.
 Change its src attribute to point "image2.png".
 */
 
-const mainImage = document.getElementById('main-image');
-mainImage.setAttribute('src', 'image2.png')
+const mainImage = document.getElementById("main-image");
+mainImage.setAttribute("src", "image2.png");
 
 /*
 Exercise 8: Adding an Event Listener
@@ -173,11 +173,10 @@ Modify the previous exercise to prevent the click event on
 the button from bubbling up to the section.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+colorButton.addEventListener("click", function (event) {
+  console.log("Color button clicked");
+  event.stopPropagation();
+});
 
 /*
 Exercise 13: Using console.log for Debugging
@@ -189,11 +188,11 @@ log the current background color of the button before changing
 it to light green.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+colorButton.addEventListener("click", function () {
+  console.log("Current background color:", colorButton.style.backgroundColor);
+  colorButton.style.backgroundColor = "lightgreen";
+});
+
 
 /*
 Exercise 14: Creating and Appending New Elements
@@ -204,11 +203,10 @@ Create a new <li> element with the text "Item 4" and append it to
 the <ul> with ID 'item-list'.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const newList = document.createElement('li');
+newList.textContent = "Item 4";
+
+itemList.appendChild(newList)
 
 /*
 Exercise 15: Removing Elements from the DOM
@@ -218,11 +216,10 @@ Description:
 Remove the first <li> element from the <ul> with ID 'item-list'.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const item1 = itemList.querySelector('#item1');
+
+ itemList.removeChild(item1)
+
 
 /*
 Exercise 16: Using classList.add
@@ -232,12 +229,11 @@ Description:
 Add a class 'highlight' to all <p> elements inside the 
 section with ID 'content'.
 */
-
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const content = document.getElementById('content')
+const contentChildern = content.querySelectorAll('p');
+contentChildern.forEach(child => {
+	child.classList.add('highlight')
+})
 
 /*
 Exercise 17: Using classList.toggle
@@ -248,11 +244,9 @@ Add a click event listener to the button with ID 'color-button' that
 toggles the class 'active' on itself.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+ colorButton.addEventListener('click', function () {
+	colorButton.classList.toggle('active')
+ });
 
 /*
 Exercise 18: Preventing Default Behavior
@@ -263,11 +257,11 @@ Add a submit event listener to the form with ID 'input-form' that
 prevents the form from submitting and logs the input value to the console.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const inputForm = document.getElementById('input-form');
+inputForm.addEventListener('click', function (e){
+	alert("You can't submit a form!");
+	e.preventDefault();
+});
 
 /*
 Exercise 19: Simple Drag and Drop
@@ -278,12 +272,23 @@ Make the element with ID 'drag-source' draggable and implement
 drag and drop functionality to move it to the element with ID 'drop-target'.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const dragSource = document.getElementById("drag-source");
+const dropTarget = document.getElementById("drop-target");
 
+dragSource.addEventListener("dragstart", function (event) {
+  event.dataTransfer.setData("text/plain", event.target.id);
+});
+
+dropTarget.addEventListener("dragover", function (event) {
+  event.preventDefault();
+});
+
+dropTarget.addEventListener("drop", function (event) {
+  event.preventDefault();
+  const data = event.dataTransfer.getData("text/plain");
+  const draggedElement = document.getElementById(data);
+  dropTarget.appendChild(draggedElement);
+});
 /*
 Exercise 20: Using dataTransfer in Drag and Drop
 
@@ -295,11 +300,16 @@ in the previous exercise.
 For example, pass a message and log it when the drop occurs.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+dragSource.addEventListener("dragstart", function (event) {
+  event.dataTransfer.setData("text/plain", "This is custom data");
+});
+
+dropTarget.addEventListener("drop", function (event) {
+  event.preventDefault();
+  const data = event.dataTransfer.getData("text/plain");
+  console.log("Dropped data:", data);
+  dropTarget.appendChild(dragSource);
+});
 
 /*
 Exercise 21: Cloning Nodes
