@@ -72,7 +72,7 @@ include a new paragraph saying "This content has been updated!".
 */
 
 
-intro.innerHTML += "This content has been updated!";
+intro.innerHTML = "This content has been updated";
 
 
 /*
@@ -96,7 +96,10 @@ Add an event listener to the button with ID 'alert-button' that
 shows an alert with the message "Button Clicked!" when clicked.
 */
 
-
+const alertButton = document.getElementById("alert-button");
+alertButton.addEventListener("click", function () {
+  alert("Button Clicked!");
+});
 
 /*
 Exercise 9: Removing an Event Listener
@@ -112,12 +115,17 @@ Then, remove the event listener so that clicking the button no longer
 shows the alert after 5 seconds.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+function showAlert() {
+  alert("Button Clicked!");
+}
 
+alertButton.addEventListener("click", showAlert);
+
+// Remove the event listener after 5 seconds
+setTimeout(function () {
+  alertButton.removeEventListener("click", showAlert);
+  console.log("Event listener removed");
+}, 5000);
 /*
 Exercise 10: Handling Keyboard Events
 
@@ -127,11 +135,9 @@ Add an event listener to the document that logs the
 key and code of any key pressed by the user.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+document.addEventListener("keydown", function (event) {
+  console.log("Key Pressed:", event.key, "KeyCode:", event.code);
+});
 
 /*
 Exercise 11: Event Propagation
@@ -146,11 +152,17 @@ In each event handler, log a message indicating which element was clicked.
 Observe event bubbling.
 */
 
-placeholder = `Delete this 
-									block 
-									and 
-									code 
-									here`;
+const interactiveSection = document.getElementById("interactive");
+const colorButton = document.getElementById("color-button");
+
+interactiveSection.addEventListener("click", function () {
+  console.log("Interactive section clicked");
+});
+
+colorButton.addEventListener("click", function (event) {
+  console.log("Color button clicked");
+});
+
 
 /*
 Exercise 12: Stopping Event Propagation
